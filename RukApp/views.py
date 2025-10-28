@@ -4,8 +4,8 @@ from .models import Property
 # Create your views here.
 
 def index(request):
-    # property = Property.objects.all()
-    return render(request, 'pages/index.html')
+    property = Property.objects.order_by('-created_at')[:6]
+    return render(request, 'pages/index.html',{'property':property})
 
 def about(request):
     return render(request, 'pages/About.html')

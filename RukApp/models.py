@@ -34,7 +34,8 @@ class Property(models.Model):
     property_description = models.TextField()
     Features_and_amenities = models.TextField()
     rent_duration = models.CharField(max_length=10, choices=RENT_DURATION_CHOICES, blank=True, null=True)
-    main_PropertyImage = models.ImageField(upload_to='property_images/', blank=True, null=True)
+    main_PropertyImage = models.ImageField(upload_to='property_images/', null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     Address = models.OneToOneField('Address', on_delete=models.CASCADE, related_name='property', blank=True, null=True )
 

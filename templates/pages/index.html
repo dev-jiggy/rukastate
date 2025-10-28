@@ -4,9 +4,9 @@
 
 
 {% include 'include/navbar.html' %}
-<div>
 
-    <!-- {% for property in property %} -->
+
+    
     <!-- billboard start  -->
     <section
       id="billboard"
@@ -100,386 +100,62 @@
     <section id="residence">
       <div class="container-fluid px-md-5">
         <h2 class="text-capitalize m-0 py-lg-5">Popular Residence</h2>
-
+        
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item15.jpg' %}" 
-                  class="card-img-top rounded-4"
-                  alt="Luxury apartment with modern kitchen"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $3,200 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Skyline Luxury Apartments</h4>
-                </a>
-                <p class="card-text">2450 Ocean Boulevard, Santa Monica, CA</p>
+          {% for property in property %}
+          <div class="col-md-6 col-lg-4 mb-5">
+              <div class="card position-relative overflow-hidden">
+                <div class="image-wrapper position-relative">
+                  
+                  <a href="{% url 'property_details' property.pk %}">
+                    <img
+                      src="{{ property.main_PropertyImage.url }}" 
+                      class="card-img-top rounded-4"
+                      alt="Luxury apartment with modern kitchen"
+                    />
+                  </a>
+                  <span class="property-label label-left-rent">{{ property.property_type }}</span>
+                  <span class="property-label label-right">{{ property.listing_type }}</span>
+                </div>
 
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      3 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1450 Sqft.
-                    </li>
-                  </ul>
+                <div class="card-body p-0">
+                  <h3 class="pt-4">
+                    ${{ property.price }}<span class="text-muted fs-5">/{{ property.rent_duration }}</span>
+                  </h3>
+                  <a href="{% url 'property_details' property.pk %}">
+                    <h4 class="card-title">{{ property.property_name }}</h4>
+                  </a>
+                  <p class="card-text">
+                    {{ property.Address }}
+                  </p>
+
+                  <div class="card-text border-top border-2 pt-3">
+                    <ul class="d-flex">
+                      <li class="residence-list pe-2 fw-semibold">
+                        <svg class="text-primary" width="30" height="30">
+                          <use xlink:href="#bed"></use>
+                        </svg>
+                       {{ property.bedrooms }} bed
+                      </li>
+                      <li class="residence-list pe-2 fw-semibold">
+                        <svg class="text-primary" width="30" height="30">
+                          <use xlink:href="#bath"></use>
+                        </svg>
+                       {{ property.bathrooms }} bath
+                      </li>
+                      <li class="residence-list pe-2 fw-semibold">
+                        <svg class="text-primary" width="30" height="30">
+                          <use xlink:href="#area"></use>
+                        </svg>
+                        {{ property.property_size }} Sqft.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item16.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
 
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item17.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item1.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item2.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item3.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item4.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item3.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card">
-              <a href="{% url 'property_details' property.pk %}"
-                ><img
-                  src="{% static 'images/item8.jpg' %}"
-                  class="card-img-top rounded-4"
-                  alt="image"
-              /></a>
-              <div class="card-body p-0">
-                <h3 class="pt-4">
-                  $250,00 <span class="text-muted fs-5">/month</span>
-                </h3>
-                <a href="{% url 'property_details' property.pk %}">
-                  <h4 class="card-title">Aliva Priva Jalvin</h4>
-                </a>
-                <p class="card-text">1087 Pin Oak Drive, Clinton, USA</p>
-
-                <div class="card-text border-top border-2 pt-3">
-                  <ul class="d-flex">
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bed"></use>
-                      </svg>
-                      4 bed
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#bath"></use>
-                      </svg>
-                      2 bath
-                    </li>
-                    <li class="residence-list pe-2 fw-semibold">
-                      <svg class="text-primary" width="30" height="30">
-                        <use xlink:href="#area"></use>
-                      </svg>
-                      1203 Sqft.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+            {% endfor %}
         </div>
         <div class="residence-btn text-center">
           <a href="{% url 'properties' %}" class="btn btn-primary btn-lg my-5"
@@ -536,7 +212,7 @@
                   pariatur distinctio temporibus.
                 </li>
               </ul>
-              <a href="contact.html" class="btn btn-primary btn-lg mt-4"
+              <a href="{% url 'contact' %}" class="btn btn-primary btn-lg mt-4"
                 >Get In Touch</a
               >
             </div>
@@ -620,7 +296,7 @@
           class="section-header d-flex align-items-center justify-content-between mb-5"
         >
           <h2 class="section-title">Related Posts</h2>
-          <a href="blog.html" class="btn btn-primary btn-lg px-4 me-md-2"
+          <a href="{% url 'blog' %}" class="btn btn-primary btn-lg px-4 me-md-2"
             >Read More</a
           >
         </div>
@@ -737,7 +413,7 @@
                 augue justo. Nibh laoreet volutpat quis velit. Blandit aliquam
                 donec sed morbi congue eget lorem viverra porta id lobortis.
               </p>
-              <a href="contact.html" class="btn btn-primary btn-lg px-4 me-md-2"
+              <a href="{% url 'contact' %}" class="btn btn-primary btn-lg px-4 me-md-2"
                 >Get Started</a
               >
             </div>
@@ -745,8 +421,8 @@
         </div>
       </div>
     </section>
-    <!-- {% endfor %} -->
-</div>
+   
+
 
     {% include 'include/footer.html' %}
 
